@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Hello! Do you like turtles?{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<img src="{{ url_for('static', filename='img/beach.png') }}" alt="beach" />
+	{% if g.user %}
+		<p><a href="{{ url_for('stream.index') }}">Let's Stream Baby</a></p>
+	{% endif %}
+{% endblock %}
