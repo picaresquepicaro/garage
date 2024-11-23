@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+	
+{% block header %}
+{% if state == 'closed' %}
+	<p>closed</p>
+{% elif state == 'open' %}
+	<p>open</p>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+	{% if g.user %}
+		<img src="{{ url_for('stream.video_feed') }}">
+	{% endif %}
+
+	<script>
+		document.addEventListener("DOMContentLoaded", (event) => {
+			console.log("fully loaded");		
+		});
+
+		window.onload = function() {
+			function sleep(time) {
+				return new Promise(resolve => setTimeout(resolve, time));
+			}
+
+			async function main() {
+				const btn = document.querySelector('[type=submit]');
+
+				console.log("waiting ...");
+				btn.hidden = true;
+				await sleep(10000);
+				btn.hidden = false;
+			}
+
+			main();
+		}
+	</script>
+{% endblock %}
+
