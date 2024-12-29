@@ -1,0 +1,9 @@
+ffmpeg -re -i /dev/video0 -f mpegts udp://localhost:port 
+ffplay udp://localhost:port
+
+<ReactPlayer 
+            url={streamUrl}
+            controls
+            width="640px"
+            height="360px"
+        />
